@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+  <!--MESSAGE FLASHING EXAMPLE -->
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+      <ul>
+      {% for message in messages %}
+        <li><strong>{{message}}</strong></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+
+  <form action= "{{url_for('editCatalogItem', item_id=item.id)}}" method = 'POST'>
+
+    <p>Name:</p>
+    <input type = 'text' size='30' name = 'name' value = '{{item.name}}'>
+    <p>Description:</p>
+    <input type = 'text' size='80' name = 'description' placeholder = '{{item.description}}'>
+    <input type='submit' value='Edit'>
+
+    <a href='{{url_for('viewcatalog')}}'> Cancel </a>
+  </form>
+
+
+
+{% endblock %}

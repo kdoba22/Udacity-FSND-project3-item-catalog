@@ -1,0 +1,58 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+  <!--MESSAGE FLASHING EXAMPLE -->
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+      <ul>
+      {% for message in messages %}
+        <li><strong>{{message}}</strong></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+
+  <div class="row">
+    <div class="col-md-12"><h1>Catalog App</h1></div>
+  </div>
+
+
+
+    {% for i in description %}
+
+    <div class="row">
+      <div class="col-md-6"><h4>{{i.name}}&nbsp;Description</h4></div>
+      <div class="col-md-6"><h4>{{i.description}}</h4></div>
+    </div>
+    <div class="row">
+      <div class="col-md-6"></div>
+      <div class="col-md-6">
+        <a href ='{{url_for('editCatalogItem',item_id = i.id) }}'>edit</a>
+        <a href ='{{url_for('deleteCatalogItem',item_id = i.id) }}'>Delete</a>
+      </div>
+    </div>
+
+
+
+
+    {% endfor %}
+
+
+{% endblock %}
+
+
+
+
+
+
+
+    <!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+
+</html>

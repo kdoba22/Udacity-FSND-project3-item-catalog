@@ -1,0 +1,28 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+
+  <!--MESSAGE FLASHING EXAMPLE -->
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+
+      <ul>
+      {% for message in messages %}
+        <li><strong>{{message}}</strong></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      {% endwith %}
+    <h1> New Catalog Item</h1>
+
+    <form action="{{ url_for('newCatalogItem', category_id=category_id)}}"
+    method = 'post'>
+
+    <p>Name:</p>
+      <input type = 'text' size='30' name='name'>
+    <p>Description:</p>
+      <input type = 'text' size='120' name='description'>
+
+<input type='submit' value='Create'>
+</form>
+{% endblock %}
